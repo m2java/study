@@ -27,4 +27,10 @@ public class TestEarthQuakeClient {
         LargestQuakes largestQuakes = new LargestQuakes();
         largestQuakes.findLargestQuakes();
     }
+
+    @Test
+    public void testClient2() {
+        EarthQuakeClient2 client2 = new EarthQuakeClient2();
+        client2.testMatchAllFilter();
+    }
 }
