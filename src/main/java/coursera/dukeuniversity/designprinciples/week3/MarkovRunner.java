@@ -23,6 +23,24 @@ public class MarkovRunner {
         }
     }
 
+    public void runMarkovOne() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\zemli\\Documents\\GitHub\\study\\src\\main\\resources\\coursera.dukeuniversity.designprinciples\\week3\\file"));
+        StringBuilder text = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            text.append(line);
+            text.replace(text.length(), text.length(), " ");
+        }
+        text.delete(text.length()-1, text.length());
+        br.close();
+
+        MarkovZero markovZero = new MarkovZero();
+        markovZero.setTraining(text.toString());
+        for (int i =0; i < 3; i ++ ) {
+            printOut(markovZero.getRandomText(text.length()));
+        }
+    }
+
     private void printOut(String s) {
         String[] words = s.split("\\s+");
         int psize = 0;
@@ -39,6 +57,6 @@ public class MarkovRunner {
     }
 
     public static void main(String[] args) throws IOException {
-        new MarkovRunner().runMarkovZero();
+        new MarkovRunner().runMarkovOne();
     }
 }
