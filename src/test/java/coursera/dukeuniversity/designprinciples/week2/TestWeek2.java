@@ -1,4 +1,4 @@
-package coursera.coursera.dukeuniversity.designprinciples.week2;
+package coursera.dukeuniversity.designprinciples.week2;
 
 import coursera.dukeuniversity.designprinciples.week1.EarthQuakeParser;
 import coursera.dukeuniversity.designprinciples.week1.QuakeEntry;

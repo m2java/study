@@ -1,4 +1,4 @@
-package coursera.coursera.dukeuniversity.designprinciples;
+package coursera.dukeuniversity.designprinciples.week3;
 
 import coursera.dukeuniversity.designprinciples.week3.MarkovOne;
 import coursera.dukeuniversity.designprinciples.week3.MarkovZero;

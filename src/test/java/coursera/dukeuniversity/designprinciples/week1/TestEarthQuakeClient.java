@@ -1,4 +1,4 @@
-package coursera.coursera.dukeuniversity.designprinciples.week1;
+package coursera.dukeuniversity.designprinciples.week1;
 
 import coursera.dukeuniversity.designprinciples.week1.*;
 import org.junit.Test;
