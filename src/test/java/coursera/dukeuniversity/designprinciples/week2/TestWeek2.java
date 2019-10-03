@@ -96,7 +96,7 @@ public class TestWeek2 {
     @Test
     public void testComparatorFinal() {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "C:\\Users\\zemli\\Documents\\GitHub\\study\\src\\main\\resources\\coursera.dukeuniversity.designprinciples\\week2\\earthQuakeDataDec6sample2.atom";
+        String source = "C:\\Users\\zemli\\Documents\\GitHub\\study\\src\\main\\resources\\coursera.dukeuniversity.designprinciples\\week3\\earthQuakeDataDec6sample2.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
 
         System.out.println("read data for " + list.size() + " quakes");
@@ -119,7 +119,7 @@ public class TestWeek2 {
     @Test
     public void sortByTitleAndDepthTestFinal() {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "C:\\Users\\zemli\\Documents\\GitHub\\study\\src\\main\\resources\\coursera.dukeuniversity.designprinciples\\week2\\earthQuakeDataDec6sample1.atom";
+        String source = "C:\\Users\\zemli\\Documents\\GitHub\\study\\src\\main\\resources\\coursera.dukeuniversity.designprinciples\\week3\\earthQuakeDataDec6sample1.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
 
         System.out.println("read data for " + list.size() + " quakes");
@@ -142,7 +142,7 @@ public class TestWeek2 {
     @Test
     public void sortByLastWordInTitleThenByMagnitudeFinal() {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "C:\\Users\\zemli\\Documents\\GitHub\\study\\src\\main\\resources\\coursera.dukeuniversity.designprinciples\\week2\\earthQuakeDataDec6sample1.atom";
+        String source = "C:\\Users\\zemli\\Documents\\GitHub\\study\\src\\main\\resources\\coursera.dukeuniversity.designprinciples\\week3\\earthQuakeDataDec6sample1.atom";
         ArrayList<QuakeEntry> list = parser.read(source);
 
         System.out.println("read data for " + list.size() + " quakes");
