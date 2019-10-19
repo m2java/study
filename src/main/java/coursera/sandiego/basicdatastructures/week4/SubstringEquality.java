@@ -6,13 +6,27 @@ import java.io.*;
 public class SubstringEquality {
   public class Solver {
     private String s;
+    private long leftLimit = 1L;
+    private long rightLimit = 1000_000_000L;
+    private int m1 = 1000_000_007;
+    private int m2 = 1000_000_009;
+    private long x = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
 
     public Solver(String s) {
       this.s = s;
     }
 
     public boolean ask(int a, int b, int l) {
-      return s.substring(a, a + l).equals(s.substring(b, b + l));
+      return hashFunc(s.substring(a, a + l), m1) == hashFunc(s.substring(b, b + l), m1) && hashFunc(s.substring(a, a + l), m2) == hashFunc(s.substring(b, b + l), m2);
+    }
+
+
+    public long hashFunc(String s, int m) {
+      long hash = 0L;
+      for (int i = s.length() - 1; i >= 0; --i) {
+        hash = (hash * x + s.charAt(i)) % m;
+      }
+      return hash;
     }
   }
 
