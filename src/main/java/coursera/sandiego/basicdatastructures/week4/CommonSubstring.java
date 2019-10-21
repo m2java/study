@@ -29,18 +29,27 @@ public class CommonSubstring {
       min = t;
       max = s;
     }
-    int low = 0;
-    int high = min.length() - 1;
-    int mid = (high - low) >>> 1;
-    for (int window = min.length(); window > 0; --window) {
-      for (int i = 0; i < max.length() - window + 1; ++i) {
-        maxMap.put(max.substring(i, i + window), i);
+    int low = 1;
+    int high = min.length();
+    while (low != high) {
+      int mid = ((high - low) >>> 1) + low;
+      maxMap.clear();
+      for (int i = 0; i < max.length() - mid + 1; ++i) {
+        maxMap.put(max.substring(i, i + mid), i);
       }
-      for (int j = 0; j < min.length() - window + 1; ++j) {
-        Integer index = maxMap.get(min.substring(j, j + window));
+      boolean found = false;
+      for (int j = 0; j < min.length() - mid + 1; ++j) {
+        Integer index = maxMap.get(min.substring(j, j + mid));
         if (index != null) {
-          return new Answer(j, index, window);
+          ans = new Answer(j, index, mid);
+          found = true;
+          break;
         }
+      }
+      if (found) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
       }
     }
     return ans;
