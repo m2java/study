@@ -1,19 +1,48 @@
 package coursera.sandiego.algorithmictoolbox.week4;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Inversions {
-  private static long getNumberOfInversions(int[] a, int[] b, int left,
-      int right) {
-    long numberOfInversions = 0;
-    if (right <= left + 1) {
-      return numberOfInversions;
+
+  public static int[] getNumberOfInversions(int[] a, long[] numberOfInversions,
+      int left, int right) {
+    if (left >= right) {
+      return new int[] { a[left] };
     }
-    int ave = (left + right) / 2;
-    numberOfInversions += getNumberOfInversions(a, b, left, ave);
-    numberOfInversions += getNumberOfInversions(a, b, ave, right);
-    //write your code here
-    return numberOfInversions;
+    int mid = (right - left) / 2 + left;
+    int[] b = getNumberOfInversions(a, numberOfInversions, left, mid);
+    int[] c = getNumberOfInversions(a, numberOfInversions, mid + 1, right);
+    return merge(b, c, numberOfInversions);
+  }
+
+  public static int[] merge(int[] b, int[] c, long[] numberOfInversions) {
+    int bLen = b.length;
+    int cLen = c.length;
+    int[] result = new int[bLen + cLen];
+    int bCount = 0;
+    int cCount = 0;
+    for (int i = 0; i < result.length; ++i) {
+      if (bCount >= bLen) {
+        result[i] = c[cCount];
+        ++cCount;
+        continue;
+      }
+      if (cCount >= cLen) {
+        result[i] = b[bCount];
+        ++bCount;
+        continue;
+      }
+      if (b[bCount] <= c[cCount]) {
+        result[i] = b[bCount];
+        ++bCount;
+      } else {
+        result[i] = c[cCount];
+        ++cCount;
+        numberOfInversions[0] += bLen - bCount;
+      }
+    }
+    return result;
   }
 
   public static void main(String[] args) {
@@ -23,7 +52,9 @@ public class Inversions {
     for (int i = 0; i < n; i++) {
       a[i] = scanner.nextInt();
     }
-    int[] b = new int[n];
-    System.out.println(getNumberOfInversions(a, b, 0, a.length));
+    long[] numberOfInversions = new long[] { 0 };
+    System.out.println(Arrays.toString(
+        getNumberOfInversions(a, numberOfInversions, 0, a.length - 1)));
+    System.out.println(Arrays.toString(numberOfInversions));
   }
 }
